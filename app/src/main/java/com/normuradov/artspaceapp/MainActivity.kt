@@ -18,8 +18,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.normuradov.artspaceapp.ui.theme.ArtSpaceAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -52,7 +56,7 @@ fun ArtSpaceFrame() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween,
     ) {
-        Surface(modifier =  Modifier
+        Surface(modifier = Modifier
             .padding(horizontal = 10.dp, vertical = 20.dp)
             .shadow(elevation = 5.dp)
             .border(color = Color.Gray, width = 6.dp)
@@ -64,20 +68,31 @@ fun ArtSpaceFrame() {
                 contentDescription = imageDescription,
                 )
         }
-        Column (
-            horizontalAlignment = Alignment.CenterHorizontally
+        Box (
+            modifier = Modifier
+                .padding(10.dp)
+                .shadow(1.dp)
+                .padding(5.dp)
+                .fillMaxWidth(0.8f)
         ) {
-            Text(text = imageTitle)
-            Text(text = "$imageAuthor ($imageDate)")
+            Column (
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(text = imageTitle,
+                    fontFamily = FontFamily.Serif,
+                    fontSize = 25.sp,
+                    textAlign = TextAlign.Center)
+                Text(text = "$imageAuthor ($imageDate)", fontFamily = FontFamily.Serif, fontSize = 15.sp,)
+            }
         }
         Spacer(modifier = Modifier.weight(1f))
-        Row {
+        Row (modifier = Modifier.padding(vertical = 10.dp)) {
             Button(onClick = { /*TODO*/ })
             {
                 Icon(
                     Icons.Filled.ArrowBack,
                     contentDescription = "Previous",
-                    modifier = Modifier.size(ButtonDefaults.IconSize)
+                    modifier = Modifier.size(50.dp)
                 )
             }
             Spacer(modifier =  Modifier.width(10.dp))
@@ -85,7 +100,7 @@ fun ArtSpaceFrame() {
                 Icon(
                     Icons.Filled.ArrowForward,
                     contentDescription = "Next",
-                    modifier = Modifier.size(ButtonDefaults.IconSize)
+                    modifier = Modifier.size(50.dp)
                 )
             }
         }
