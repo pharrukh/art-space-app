@@ -81,12 +81,12 @@ fun ArtSpaceFrame(images: List<ArtImage>) {
     val imageDate = image.date
 
     Column (
-        modifier = Modifier.fillMaxHeight(),
+        modifier = Modifier.fillMaxHeight().fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween,
     ) {
         Surface(modifier = Modifier
-            .padding(horizontal = 10.dp, vertical = 20.dp)
+            .padding(horizontal = 20.dp, vertical = 30.dp)
             .shadow(elevation = 5.dp)
             .border(color = Color.Gray, width = 6.dp)
             .padding(40.dp)
